@@ -13,7 +13,7 @@
 					</h2>
 					<h2 v-else>
 						Another simple<br>
-						yet powerfull<br>
+						yet powerful<br>
 						<span class="clip">UI framework</span>
 					</h2>
 

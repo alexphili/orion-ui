@@ -2,8 +2,8 @@ name: Build for Develop pre-release
 
 on:
   push:
-    branches:
-      - develop
+    branches-ignore:
+      - main
 
 jobs:
   build-develop:
@@ -32,6 +32,6 @@ jobs:
         run: node scripts/ci-build-lib.cjs
 
       - name: Publish to NPM
-        run: npm publish --access public
+        run: npm publish --tag ${GITHUB_REF_NAME} --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

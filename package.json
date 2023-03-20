@@ -1,6 +1,10 @@
 {
-	"name": "@armado/orion",
-	"version": "0.4.5",
+	"name": "@orion.ui/orion",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/orion-ui/orion-ui"
+	},
+	"license": "MIT",
 	"type": "module",
 	"files": [
 		"dist"
@@ -24,9 +28,6 @@
 		"cache": false
 	},
 	"sideEffects": false,
-	"publishConfig": {
-		"@armado:registry": "https://gitlab.armado.fr/api/v4/projects/4/packages/npm/"
-	},
 	"scripts": {
 		"serve": "vite --port=9090",
 		"build": "vite build",

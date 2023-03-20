@@ -1,6 +1,6 @@
 {
-	"name": "@orion.ui/vue",
-	"version": "0.1.11",
+	"name": "@orion.ui/orion",
+	"version": "0.1.12",
 	"type": "module",
 	"files": [
 		"dist"

@@ -1,0 +1,38 @@
+name: Build & Publish to NPM
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish-npm:
+    name: Publish to NPM
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Checking out
+        uses: actions/checkout@v3
+			
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+      
+			- name: Install dependencies & Bump version
+        run: npm ci
+				run: npm version ${{ github.ref }} --no-git-tag-version
+      
+			- name: Build lib for NPM
+        run: npm run build
+      
+			- name: Run Orion post build script
+        run: node scripts/ci-build-lib.cjs
+      
+			- name: Publish to NPM
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

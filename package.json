@@ -25,7 +25,7 @@
 	},
 	"sideEffects": false,
 	"publishConfig": {
-		"@orion-ui-framework": "registry=https://npm.pkg.github.com"
+		"@orion-ui": "registry=https://npm.pkg.github.com"
 	},
 	"scripts": {
 		"serve": "vite --port=9090",

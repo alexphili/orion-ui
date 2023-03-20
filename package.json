@@ -1,5 +1,5 @@
 {
-	"name": "@orion-ui/orion-ui",
+	"name": "orion-ui",
 	"version": "0.1.5",
 	"type": "module",
 	"files": [
@@ -24,9 +24,6 @@
 		"cache": false
 	},
 	"sideEffects": false,
-	"publishConfig": {
-		"@orion-ui:registry": "https://npm.pkg.github.com"
-	},
 	"scripts": {
 		"serve": "vite --port=9090",
 		"build": "vite build",

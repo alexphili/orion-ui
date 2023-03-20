@@ -2,8 +2,8 @@ name: Build for Develop pre-release
 
 on:
   push:
-    branches:
-      - !main
+    branches-ignore:
+      - main
 
 jobs:
   build-develop:

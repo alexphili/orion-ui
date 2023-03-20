@@ -1,0 +1,63 @@
+include:
+  - project: "armado/ci-tools"
+    ref: main
+    file:
+      - "/templates/common/.include.yml"
+      - "/templates/javascript/.build-front.yml"
+      - "/templates/.build-npm-package.yml"
+      - "/templates/nomad/.deploy-nomad-job.yml"
+
+stages:
+  # Jobs
+  - build
+  - deploy
+  - build-deploy
+  - build-deploy-master
+
+.change-docs:
+  changes:
+    - docs/**/*
+
+build-docs-develop:
+  extends:
+    - .build-front
+    - .env-develop
+  rules:
+    - if: $CI_COMMIT_BRANCH == "develop"
+      changes: !reference [.change-docs, changes]
+
+deploy-docs-develop:
+  extends:
+    - .deploy-nomad-job
+    - .tag-nomad
+    - .env-develop
+  rules:
+    - if: $CI_COMMIT_BRANCH == "develop"
+      changes: !reference [.change-docs, changes]
+
+build-docs-production:
+  extends:
+    - .build-front
+    - .env-production
+  script:
+    - docker build --network host -t gitlab.armado.fr:5050/armado/${CI_PROJECT_NAME}:${CI_ENVIRONMENT_NAME}-${DOCKER_IMAGE_TAG_PROD} --build-arg NPM_TOKEN=${CI_JOB_TOKEN} .
+    - docker push gitlab.armado.fr:5050/armado/${CI_PROJECT_NAME}:${CI_ENVIRONMENT_NAME}-${DOCKER_IMAGE_TAG_PROD}
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^\d+.\d+.\d+(-rc\d+)?/
+      changes: !reference [.change-docs, changes]
+
+deploy-docs-production:
+  extends:
+    - .deploy-nomad-job
+    - .tag-nomad
+    - .env-production
+  script:
+    - cd Jobs
+    - sed -i -e "s/{{${PROJECT_NAME}-tag}}/${DOCKER_IMAGE_TAG_PROD}/g" ${PROJECT_NAME}.${CI_ENVIRONMENT_NAME}.hcl
+    - nomad validate ${PROJECT_NAME}.${CI_ENVIRONMENT_NAME}.hcl
+    - nomad plan ${PROJECT_NAME}.${CI_ENVIRONMENT_NAME}.hcl || if [ $? -eq 255 ]; then exit 255; else echo "success"; fi
+    - nomad run ${PROJECT_NAME}.${CI_ENVIRONMENT_NAME}.hcl
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^\d+.\d+.\d+(-rc\d+)?/
+      changes: !reference [.change-docs, changes]
+      when: manual

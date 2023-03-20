@@ -1,6 +1,10 @@
 {
 	"name": "@orion.ui/orion",
-	"version": "0.0.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/orion-ui/orion-ui"
+	},
+	"license": "MIT",
 	"type": "module",
 	"files": [
 		"dist"

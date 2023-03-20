@@ -1,16 +1,14 @@
-name: Build & Publish to NPM
+name: Build for Develop pre-release
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - !main
 
 jobs:
-  publish-npm:
-    name: Build & Publish to NPM
+  build-develop:
+    name: Build Develop
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
     steps:
       - name: Checking out
         uses: actions/checkout@v3
@@ -25,7 +23,7 @@ jobs:
         run: npm ci
 
       - name: Bump version
-        run: npm version ${{ github.event.release.tag_name }} --no-git-tag-version
+        run: npm version "$(BRANCH=${GITHUB_REF_NAME} node scripts/npm-version.cjs)" --no-git-tag-version
 
       - name: Build lib for NPM
         run: npm run build

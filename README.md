@@ -1,8 +1,6 @@
 ![Orion UI](https://repository-images.githubusercontent.com/616359964/fad1ee21-1781-452f-843d-43af9eda0802)
 
-# Orion
-
-## Another simple yet powerful UI framework
+# Orion - Another simple yet powerful UI framework
 
 Orion aims at being as simple as possible, but still provides rich features out-of-the-box.\
 It's written in TypeScript, fully typed, because we care about DX.\

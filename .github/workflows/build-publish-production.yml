@@ -1,18 +1,18 @@
-name: Build & Publish to NPM
+name: Build & Publish for production
 
 on:
   release:
     types: [published]
 
 jobs:
-  publish-npm:
+  build-publish-production:
     name: Build & Publish to NPM
     runs-on: ubuntu-latest
     permissions:
       packages: write
       contents: read
     steps:
-      - name: Checking out
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Setup Node.js
@@ -27,13 +27,13 @@ jobs:
       - name: Bump version
         run: npm version ${{ github.event.release.tag_name }} --no-git-tag-version
 
-      - name: Build lib for NPM
+      - name: Build lib
         run: npm run build
 
-      - name: Run Orion post build script
+      - name: Run post build script
         run: node scripts/ci-build-lib.cjs
 
-      - name: Publish to NPM
+      - name: Publish to NPM for production
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

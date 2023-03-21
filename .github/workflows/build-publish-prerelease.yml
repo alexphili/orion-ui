@@ -3,6 +3,7 @@ name: Build & Publish for pre-release
 on:
   push:
     branches:
+      - develop
       - 'feature/**'
       - 'hotfix/**'
       - 'release/**'

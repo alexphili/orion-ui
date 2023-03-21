@@ -18,7 +18,7 @@ function findNextVersion () {
 				.on('end', () => {
 					const result = JSON.parse(data);
 					const latest = result['dist-tags']?.latest ?? '0.0.0';
-					const currentBranch = result['dist-tags'][branch];
+					const currentBranch = result['dist-tags']?.[branch] ?? branch;
 
 					if (currentBranch?.includes(`${latest}-${branch}`)) {
 						const currentVersion = (/\d+$/.exec(currentBranch))?.[0];

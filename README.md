@@ -1,30 +1,39 @@
-# Vue 3 + Typescript + Vite
+![Orion UI](https://repository-images.githubusercontent.com/616359964/fad1ee21-1781-452f-843d-43af9eda0802)
 
-This template should help get you started developing with Vue 3 and Typescript in Vite.
+# Orion
 
-## Recommended IDE Setup
+## Another simple yet powerful UI framework
 
-[VSCode](https://code.visualstudio.com/) + [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur). Make sure to enable `vetur.experimental.templateInterpolationService` in settings!
+Orion aims at being as simple as possible, but still provides rich features out-of-the-box.\
+It's written in TypeScript, fully typed, because we care about DX.\
+Based on Vue 3 and Vite, it's customizable and well documented.
 
-### If Using `<script setup>`
+## Full documentation
 
-[`<script setup>`](https://github.com/vuejs/rfcs/pull/227) is a feature that is currently in RFC stage. To get proper IDE support for the syntax, use [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) instead of Vetur (and disable Vetur).
+Link to come
 
-## Type Support For `.vue` Imports in TS
+## Installation
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can use the following:
+`npm i @orion.ui/orion`
 
-### If Using Volar
+## Basic usage
 
-Run `Volar: Switch TS Plugin on/off` from VSCode command palette.
+```ts
+import { createApp } from 'vue';
+import App from './App.vue';
 
-### If Using Vetur
+// Import library
+import Orion from '@orion.ui/orion';
+// Import styles (or .less files if needed)
+import '@orion.ui/orion/dist/style.css';
+// Import Monkey Patching definition file (if you chose to use our monkeyPatching)
+import '@orion.ui/orion/dist/monkey-patching';
 
-1. Install and add `@vuedx/typescript-plugin-vue` to the [plugins section](https://www.typescriptlang.org/tsconfig#plugins) in `tsconfig.json`
-2. Delete `src/shims-vue.d.ts` as it is no longer needed to provide module info to Typescript
-3. Open `src/main.ts` in VSCode
-4. Open the VSCode command palette
-5. Search and run "Select TypeScript version" -> "Use workspace version"
+createApp(App)
+  .use(Orion)
+  .mount('#app');
+
+```
 
 ## License 
 

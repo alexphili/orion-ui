@@ -25,7 +25,7 @@
 				<PageNav/>
 				<div class="footer">
 					<span><a href="https://choosealicense.com/licenses/mit/" target="_blank">MIT Licensed</a> 
-						| Copyright © 2022-present ARMADO</span>
+						| Copyright © 2023-present Orion UI</span>
 				</div>
 			</main>
 			

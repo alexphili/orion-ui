@@ -1,16 +1,11 @@
 name: Build documentation for pre-release
 
 on:
-  push:
-    branches:
-      - develop
-    paths:
-      - 'docs/**'
-      - 'packages/*/docs/**'
-      - '**.yml'
+  release:
+    types: [published]
 
 jobs:
-  build-publish-prerelease:
+  build-publish-production:
     name: Build Lib
     runs-on: ubuntu-latest
     permissions:
@@ -40,3 +35,11 @@ jobs:
         run: npm run docs:build
         env:
           NODE_OPTIONS: --max-old-space-size=4096
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: docs/.vuepress/dist
+
+      - name: Deploy artifact
+        uses: actions/deploy-pages@v2

@@ -94,7 +94,9 @@ export const fr: SidebarConfig = [
 	{
 		text: 'Services',
 		collapsible: true,
-		children: readdirSync(path.resolve(__dirname, '../../../fr/services/')).map(x => '/fr/services/' + x.slice(0, x.length-3))
+		children: readdirSync(path.resolve(__dirname, '../../../fr/services/'))
+			.filter(x => x !== 'Tour.md')
+			.map(x => '/fr/services/' + x.slice(0, x.length-3))
 	},
 	{
 		text: 'Outils',

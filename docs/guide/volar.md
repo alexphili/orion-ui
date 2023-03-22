@@ -40,10 +40,10 @@ This command will create a `orion-volar.d.ts` file with the appropriate content.
 ``` ts
 declare module 'vue' {
 	export interface GlobalComponents {
-		OAlert: typeof import('@armado/orion/dist/types/packages')['OrionAlert'];
-		OAside: typeof import('@armado/orion/dist/types/packages')['OrionAside'];
+		OAlert: typeof import('@orion.ui/orion/dist/types/packages')['OrionAlert'];
+		OAside: typeof import('@orion.ui/orion/dist/types/packages')['OrionAside'];
 		...
-		OUpload: typeof import('@armado/orion/dist/types/packages')['OrionUpload'];
+		OUpload: typeof import('@orion.ui/orion/dist/types/packages')['OrionUpload'];
 	}
 
   export interface ComponentCustomProperties {}
@@ -89,10 +89,10 @@ npx orion
 ``` ts{3,4,6}
 declare module 'vue' {
 	export interface GlobalComponents {
-		AbcAlert: typeof import('@armado/orion/dist/types/packages')['OrionAlert'];
-		AbcAside: typeof import('@armado/orion/dist/types/packages')['OrionAside'];
+		AbcAlert: typeof import('@orion.ui/orion/dist/types/packages')['OrionAlert'];
+		AbcAside: typeof import('@orion.ui/orion/dist/types/packages')['OrionAside'];
 		...
-		AbcUpload: typeof import('@armado/orion/dist/types/packages')['OrionUpload'];
+		AbcUpload: typeof import('@orion.ui/orion/dist/types/packages')['OrionUpload'];
 	}
 
   export interface ComponentCustomProperties {}

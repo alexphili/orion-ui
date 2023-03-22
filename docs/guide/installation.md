@@ -18,7 +18,7 @@ cd my-project
 npm init
 
 # Then install Orion
-npm install --save @armado/orion
+npm install --save @orion.ui/orion
 ```
 
 That's it ! **Orion** is now part of your dependencies and can be used in your project.

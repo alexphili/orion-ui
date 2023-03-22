@@ -87,7 +87,7 @@ ${(result as any).en ?? 'Missing documentation'}
 
 <template #source>
 ${App.markdown.render(`\`\`\`vue${highlight}
-${source}
+${source?.replace(/from 'lib'/gm, `from '@orion.ui/orion'`)}
 \`\`\``)}
 </template>
 </PackageDemo>

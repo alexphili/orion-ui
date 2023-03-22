@@ -11,12 +11,16 @@ const themeOrion = (options?: DefaultThemeOptions): Theme => {
 			clientConfigFile: path.resolve(__dirname, 'client.ts'),
 			extends: defaultTheme({
 				logo: '/orion-logo-brand.svg',
+				repo: 'orion-ui/orion-ui',
+				docsRepo: 'orion-ui/orion-ui',
+				docsBranch: 'main',
+				docsDir: 'docs',
+				editLinkPattern: ':repo/edit/:branch/:path',
 				locales: {
 					'/': {
 						navbar: navbar.en,
 						sidebar: sidebar.en,
 						sidebarDepth: 0,
-						contributors: false,
 					},
 					'/fr/': {
 						home: '/fr/',
@@ -25,7 +29,6 @@ const themeOrion = (options?: DefaultThemeOptions): Theme => {
 						navbar: navbar.fr,
 						sidebar: sidebar.fr,
 						sidebarDepth: 0,
-						contributors: false,
 						//custom container
 						tip: 'Astuce',
 						warning: 'Attention'

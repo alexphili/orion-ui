@@ -4,7 +4,7 @@
 		color="info"
 		close
 		@close="closeCb()">
-		Curabitur blandit tempus porttitors.
+		Curabitur blandit tempus porttitor.
 	</o-alert>
 </template>
 

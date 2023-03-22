@@ -44,7 +44,7 @@ jobs:
           NODE_OPTIONS: --max-old-space-size=4096
 
       - name: Upload artifact
-        uses: upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v1
 
       - name: Deploy artifact
-        uses: deploy-pages@v2
+        uses: actions/deploy-pages@v2

@@ -68,7 +68,6 @@ export default defineUserConfig({
 					key: 'k',
 					ctrl: true,
 				}
-
 			]
 		}),
 		registerComponentsPlugin({
@@ -85,7 +84,7 @@ export default defineUserConfig({
 	bundler: viteBundler({
 		viteOptions: {
 			plugins: [
-				OrionDemos(specificPackagesMap, supportedLanguages),
+				// OrionDemos(specificPackagesMap, supportedLanguages),
 				vueJsx(),
 			]
 		},

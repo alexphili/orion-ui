@@ -11,7 +11,7 @@ on:
 
 jobs:
   build-publish-prerelease:
-    name: Build Develop
+    name: Build Lib
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,6 +32,14 @@ jobs:
       - name: Run post build script
         run: node scripts/ci-build-lib.cjs
 
+  build-doc-prerelease:
+    name: Build Doc
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
       - name: Build doc
         run: npm run docs:build
         env:

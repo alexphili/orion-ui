@@ -1,0 +1,40 @@
+name: Build & Publish for pre-release
+
+on:
+  push:
+    branches:
+      - develop
+      - 'feature/**'
+      - 'hotfix/**'
+      - 'release/**'
+      - '!main'
+    paths:
+      - 'assets/**'
+      - 'devtool/**'
+      - 'lang/**'
+      - 'lib/**'
+      - 'packages/*/src/**'
+      - 'packages/*/index.ts'
+      - 'scripts/**'
+      - 'services/**'
+      - 'utils/**'
+      - 'cli.cjs'
+      - 'vite.config.ts'
+      - 'build-publish-prerelease.yml'
+
+jobs:
+  build-lib:
+    uses: ./.github/workflows/build-lib.yml
+
+  publish-prerelease:
+    name: Build Develop
+    runs-on: ubuntu-latest
+    need: build-lib
+    steps:
+      - name: Bump version
+        run: npm version "$(BRANCH=${GITHUB_REF_NAME} node scripts/npm-version.cjs)" --no-git-tag-version
+
+      - name: Publish to NPM for pre-release
+        run: npm publish --tag ${GITHUB_REF_NAME} --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

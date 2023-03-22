@@ -9,13 +9,6 @@ on:
       - 'packages/*/docs/**'
       - '**.yml'
 
-  workflow_call:
-    inputs:
-      path:
-        description: 'Path of the directory containing the static assets.'
-        required: true
-        default: 'docs/.vuepress/dist'
-
 jobs:
   build-publish-prerelease:
     name: Build Develop
@@ -46,6 +39,8 @@ jobs:
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
+        with:
+          path: docs/.vuepress/dist
 
       - name: Deploy artifact
         uses: actions/deploy-pages@v2

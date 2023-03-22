@@ -27,7 +27,7 @@ jobs:
       - name: Run post build script
         run: node scripts/ci-build-lib.cjs
 
-      - name: Upload build result
+      - name: Upload build artifact
         uses: actions/upload-artifact@v3
         with:
           name: orion-build
@@ -42,10 +42,22 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - name: Download lib build result
+      - name: Download lib build artifact
         uses: actions/download-artifact@v3
         with:
           name: orion-build
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Build doc
         run: npm run docs:build

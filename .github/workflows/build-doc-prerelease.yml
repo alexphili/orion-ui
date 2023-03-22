@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - develop
-		paths:
-			- 'docs/**'
-			- 'packages/*/docs/**'
+    paths:
+      - 'docs/**'
+      - 'packages/*/docs/**'
 
 jobs:
   build-publish-prerelease:

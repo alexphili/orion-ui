@@ -1,12 +1,24 @@
-name: Build & Publish for production
+name: Build Pull Request
 
 on:
-  release:
-    types: [published]
+  pull_request:
+    paths:
+      - 'assets/**'
+      - 'devtool/**'
+      - 'lang/**'
+      - 'lib/**'
+      - 'packages/*/src/**'
+      - 'packages/*/index.ts'
+      - 'scripts/**'
+      - 'services/**'
+      - 'utils/**'
+      - 'cli.cjs'
+      - 'vite.config.ts'
+      - '**.yml'
 
 jobs:
-  build-publish-production:
-    name: Build & Publish to NPM
+  build-lib-pullrequest:
+    name: Build Develop
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,16 +33,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Bump version
-        run: npm version ${{ github.event.release.tag_name }} --no-git-tag-version
-
       - name: Build lib
         run: npm run build
 
       - name: Run post build script
         run: node scripts/ci-build-lib.cjs
-
-      - name: Publish to NPM for production
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

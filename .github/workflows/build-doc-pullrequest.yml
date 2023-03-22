@@ -1,11 +1,14 @@
-name: Build documentation for pre-release
+name: Build documentation for pull-request
 
 on:
-  release:
-    types: [published]
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'packages/*/docs/**'
+      - '**.yml'
 
 jobs:
-  build-lib-production:
+  build-lib-pullrequest:
     name: Build Lib
     runs-on: ubuntu-latest
     steps:
@@ -33,14 +36,10 @@ jobs:
           name: orion-build
           path: dist
 
-  build-doc-production:
+  build-doc-pullrequest:
     name: Build Doc
     runs-on: ubuntu-latest
-    needs: build-lib-production
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
+    needs: build-lib-pullrequest
     steps:
       - name: Download Lib artifact
         uses: actions/download-artifact@v3
@@ -63,11 +62,3 @@ jobs:
         run: npm run docs:build
         env:
           NODE_OPTIONS: --max-old-space-size=4096
-
-      - name: Upload Doc artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: docs/.vuepress/dist
-
-      - name: Deploy to Github Pages
-        uses: actions/deploy-pages@v2

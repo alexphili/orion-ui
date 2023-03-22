@@ -10,7 +10,7 @@ on:
       - '**.yml'
 
 jobs:
-  build-publish-prerelease:
+  build-lib-prerelease:
     name: Build Lib
     runs-on: ubuntu-latest
     steps:
@@ -31,6 +31,34 @@ jobs:
 
       - name: Run post build script
         run: node scripts/ci-build-lib.cjs
+
+      - name: Upload Lib artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: orion-build
+          path: dist
+
+  build-doc-prerelease:
+    name: Build Doc
+    runs-on: ubuntu-latest
+    needs: build-lib-prerelease
+    steps:
+      - name: Download Lib artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: orion-build
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Build doc
         run: npm run docs:build

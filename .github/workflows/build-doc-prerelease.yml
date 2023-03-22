@@ -13,10 +13,6 @@ jobs:
   build-publish-prerelease:
     name: Build Lib
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v3

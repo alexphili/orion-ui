@@ -4,6 +4,7 @@
 		"type": "git",
 		"url": "https://github.com/orion-ui/orion-ui"
 	},
+	"homepage": "https://orion-ui.org/",
 	"license": "MIT",
 	"type": "module",
 	"files": [

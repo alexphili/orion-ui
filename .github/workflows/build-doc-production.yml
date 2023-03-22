@@ -27,7 +27,7 @@ jobs:
       - name: Run post build script
         run: node scripts/ci-build-lib.cjs
 
-      - name: Upload build artifact
+      - name: Upload Lib artifact
         uses: actions/upload-artifact@v3
         with:
           name: orion-build
@@ -42,7 +42,7 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - name: Download lib build artifact
+      - name: Download Lib artifact
         uses: actions/download-artifact@v3
         with:
           name: orion-build
@@ -64,10 +64,10 @@ jobs:
         env:
           NODE_OPTIONS: --max-old-space-size=4096
 
-      - name: Upload artifact
+      - name: Upload Doc artifact
         uses: actions/upload-pages-artifact@v1
         with:
           path: docs/.vuepress/dist
 
-      - name: Deploy artifact
+      - name: Deploy to Github Pages
         uses: actions/deploy-pages@v2

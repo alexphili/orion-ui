@@ -30,7 +30,7 @@ jobs:
   publish-prerelease:
     name: Build Develop
     runs-on: ubuntu-latest
-    need: build-lib
+    needs: build-lib
     steps:
       - name: Bump version
         run: npm version "$(BRANCH=${GITHUB_REF_NAME} node scripts/npm-version.cjs)" --no-git-tag-version

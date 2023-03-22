@@ -11,7 +11,7 @@ jobs:
   publish-production:
     name: Build & Publish to NPM
     runs-on: ubuntu-latest
-    need: build-lib
+    needs: build-lib
     steps:
       - name: Bump version
         run: npm version ${{ github.event.release.tag_name }} --no-git-tag-version

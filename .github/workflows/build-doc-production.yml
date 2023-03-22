@@ -31,6 +31,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: orion-build
+          path: dist
 
   build-doc-production:
     name: Build Doc

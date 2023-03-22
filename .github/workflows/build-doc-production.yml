@@ -5,7 +5,7 @@ on:
     types: [published]
 
 jobs:
-  build-publish-production:
+  build-lib-production:
     name: Build Lib
     runs-on: ubuntu-latest
     steps:

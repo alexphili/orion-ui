@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-console.log('lkhs');
+
 /* eslint-disable no-console */
 const { prompt } = require('enquirer');
 const path = require('path');

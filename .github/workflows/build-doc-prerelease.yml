@@ -9,6 +9,12 @@ on:
       - 'packages/*/docs/**'
       - '**.yml'
 
+inputs:
+  path:
+    description: 'Path of the directory containing the static assets.'
+    required: true
+    default: 'docs/.vuepress/dist'
+
 jobs:
   build-publish-prerelease:
     name: Build Develop
@@ -36,3 +42,9 @@ jobs:
         run: npm run docs:build
         env:
           NODE_OPTIONS: --max-old-space-size=4096
+
+      - name: Upload artifact
+        uses: upload-pages-artifact@v1
+
+      - name: Deploy artifact
+        uses: deploy-pages@v2

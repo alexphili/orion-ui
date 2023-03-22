@@ -11,7 +11,7 @@ Si vous n'êtes pas familier avec **npm** vous pouvez vous référer à la [page
 :::
 
 ```sh:no-line-numbers
-npm install --save @armado/orion
+npm install --save @orion.ui/orion
 ```
 
 :::: code-group
@@ -21,9 +21,9 @@ npm install --save @armado/orion
 import { createApp } from 'vue';
 import App from './App.vue';
 
-import Orion from '@armado/orion'; // Import de la librairie
-import '@armado/orion/dist/style.css'; // Import des styles
-import '@armado/orion/dist/monkey-patching'; // Import du fichier de définition du Monkey Patching
+import Orion from '@orion.ui/orion'; // Import de la librairie
+import '@orion.ui/orion/dist/style.css'; // Import des styles
+import '@orion.ui/orion/dist/monkey-patching'; // Import du fichier de définition du Monkey Patching
 
 createApp(App).use(Orion).mount('#app');
 ```
@@ -36,8 +36,8 @@ createApp(App).use(Orion).mount('#app');
 import { createApp } from 'vue';
 import App from './App.vue';
 
-import Orion from '@armado/orion'; // Import de la librairie
-import '@armado/orion/dist/style.css'; // Import des styles
+import Orion from '@orion.ui/orion'; // Import de la librairie
+import '@orion.ui/orion/dist/style.css'; // Import des styles
 
 createApp(App)
   .use(Orion, {

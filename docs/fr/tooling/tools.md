@@ -10,7 +10,7 @@ Il est possible d'importer ces fonctions pour vous aider avec des opérations de
 ## Exemple
 
 ```ts
-import { prefixWithZeros, getDaysInMonth, isTouch } from '@armado/orion';
+import { prefixWithZeros, getDaysInMonth, isTouch } from '@orion.ui/orion';
 
 const numberWithPrefix = prefixWithZeros(15, 6);
 // sortie -> "000015"

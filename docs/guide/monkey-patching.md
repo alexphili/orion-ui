@@ -26,8 +26,8 @@ To make the benefits of our Monkey Patching available to everyone we provide a *
 ```ts {7,11}
 import { createApp } from 'vue';
 import App from './App.vue';
-import Orion from '@armado/orion'; // Import library
-import '@armado/orion/dist/style.css'; // Import styles
+import Orion from '@orion.ui/orion'; // Import library
+import '@orion.ui/orion/dist/style.css'; // Import styles
 
 createApp(App)
 	.use(Orion) // full library
@@ -46,8 +46,8 @@ console.log(readableDate);
 ```ts {3,8,14-15}
 import { createApp } from 'vue';
 import App from './App.vue';
-import Orion, { useMonkey } from '@armado/orion'; // Import library
-import '@armado/orion/dist/style.css'; // Import styles
+import Orion, { useMonkey } from '@orion.ui/orion'; // Import library
+import '@orion.ui/orion/dist/style.css'; // Import styles
 
 createApp(App)
 	.use(Orion, {

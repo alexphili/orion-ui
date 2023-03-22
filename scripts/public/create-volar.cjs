@@ -55,7 +55,7 @@ module.exports = async (/** @type {Options} */ options) => {
 		if (options.inOrion) {
 			return `${prefix}${x}: typeof import('packages/index')['Orion${x}'];`;
 		} else {
-			return `${prefix}${x}: typeof import('@armado/orion/dist/types/packages')['Orion${x}'];`;
+			return `${prefix}${x}: typeof import('@orion.ui/orion/dist/types/packages')['Orion${x}'];`;
 		}
 	}).join('\n\t\t'));
 

@@ -37,12 +37,8 @@ const privateChoices = [
 		message: 'packages  - Create index files for packages export',
 	},
 	{
-		name: 'types',
-		message: 'types     - Create .dts files for the packages',
-	},
-	{
 		name: 'services',
-		message: 'services  - Create .dts files for the services',
+		message: 'services  - Create index files for services export',
 	},
 	{
 		name: 'routes',
@@ -137,9 +133,6 @@ const privateChoices = [
 		case 'services':
 			await require('./scripts/private/create-services-index.cjs')(options);
 			break;
-		case 'types':
-			await require('./scripts/private/create-types-declaration-files.cjs')(options);
-			break;
 		case 'routes':
 			await require('./scripts/private/create-routes.cjs')(options);
 			break;
@@ -166,7 +159,7 @@ function privateGuard () {
 function inOrion () {
 	try {
 		const { name: projectName } = require(path.join(process.cwd(), 'package.json'));
-		return projectName === '@armado/orion';
+		return projectName === '@orion.ui/orion';
 	} catch (e) {
 		console.log(`🚨 ${e}`);
 		console.log(`🚨 Are you in your project root folder ?`);

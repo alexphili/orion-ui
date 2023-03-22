@@ -84,7 +84,7 @@ export default defineUserConfig({
 	bundler: viteBundler({
 		viteOptions: {
 			plugins: [
-				// OrionDemos(specificPackagesMap, supportedLanguages),
+				OrionDemos(specificPackagesMap, supportedLanguages),
 				vueJsx(),
 			]
 		},

@@ -1,5 +1,8 @@
 name: Build Lib
 
+on:
+  workflow_call:
+
 jobs:
   build-lib:
     name: Build Lib

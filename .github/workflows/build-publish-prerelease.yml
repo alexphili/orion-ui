@@ -20,7 +20,7 @@ on:
       - 'utils/**'
       - 'cli.cjs'
       - 'vite.config.ts'
-      - '**.yml'
+      - 'build-publish-prerelease.yml'
 
 jobs:
   build-publish-prerelease:

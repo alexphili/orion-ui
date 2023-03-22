@@ -22,7 +22,8 @@
 			<main class="doc-content">
 				<Home v-if="frontmatter.home"/>
 				<Content v-else/>
-				<PageNav/>
+				<PageNav v-if="!frontmatter.home"/>
+				<PageMeta v-if="!frontmatter.home"/>
 				<div class="footer">
 					<span><a href="https://choosealicense.com/licenses/mit/" target="_blank">MIT Licensed</a> 
 						| Copyright © 2023-present Orion UI</span>
@@ -46,6 +47,7 @@ import { addCopyFeatureToCode } from '@utils/tools';
 import Sidebar from '@theme/Sidebar.vue';
 import Navbar from '@theme/Navbar.vue';
 import PageNav from '@theme/PageNav.vue';
+import PageMeta from '@theme/PageMeta.vue';
 import TableOfContent from './components/TableOfContents.vue';
 import Home from './components/Home.vue';
 

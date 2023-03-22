@@ -8,6 +8,19 @@ on:
       - 'hotfix/**'
       - 'release/**'
       - '!main'
+    paths:
+      - 'assets/**'
+      - 'devtool/**'
+      - 'lang/**'
+      - 'lib/**'
+      - 'packages/*/src/**'
+      - 'packages/*/index.ts'
+      - 'scripts/**'
+      - 'services/**'
+      - 'utils/**'
+      - 'cli.cjs'
+      - 'vite.config.ts'
+      - '**.yml'
 
 jobs:
   build-publish-prerelease:
